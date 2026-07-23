@@ -462,31 +462,57 @@ footer{background:var(--black);padding:64px 6% 40px;border-top:1px solid rgba(25
     border-color: #00d2ff !important; /* Glow accent color on hover */
 }
 
-/* Image Frame Constraints */
-/* Turns the image area into a mini swipable carousel container */
+/* Image Frame Constraints & Swipable Setup */
 .card-img-wrapper {
+    position: relative !important;
     width: 100% !important;
     height: 200px !important;
-    overflow-x: auto !important; /* Enables horizontal swiping/scrolling */
+    overflow-x: auto !important; /* Enables horizontal swiping */
     display: flex !important;
     scroll-snap-type: x mandatory !important;
     background: #000;
     -webkit-overflow-scrolling: touch;
 }
 
-/* Hides the desktop scrollbar track inside the cards to keep it clean */
+/* Hides the desktop scrollbar track inside the cards */
 .card-img-wrapper::-webkit-scrollbar {
     display: none;
 }
 
 /* Forces each image to take up the full card width, snapping into place */
 .clean-card img {
-    flex: 0 0 100% !important; /* Each image fills the whole display space */
+    flex: 0 0 100% !important; 
     width: 100% !important;
     height: 100% !important;
     object-fit: contain !important;
     scroll-snap-align: start !important; /* Snaps the image cleanly on swipe */
     transition: transform 0.3s ease !important;
+}
+
+/* Light overlay visual arrow cues */
+.swipe-indicator {
+    position: absolute !important;
+    top: 90px !important; /* Positions indicators perfectly centered over image fields */
+    display: flex !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    padding: 0 10px !important;
+    pointer-events: none; /* Allows click-throughs directly onto image elements */
+    z-index: 10 !important;
+}
+
+.swipe-arrow {
+    background: rgba(0, 0, 0, 0.4) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    border-radius: 50% !important;
+    width: 28px !important;
+    height: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    user-select: none !important;
 }
 
 .clean-card:hover img {
