@@ -445,108 +445,162 @@ footer{background:var(--black);padding:64px 6% 40px;border-top:1px solid rgba(25
       <button class="gtab" onclick="showTab('wht',this)">🔧 We Help Tradies · AU</button>
     </div>
 <style>
-/* Makes the grid layout a horizontal, swipable row */
-.gallery-grid {
-    display: flex !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    gap: 16px !important;
-    padding-bottom: 15px;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
-}
-
-/* Hides desktop scrollbars */
-.gallery-grid::-webkit-scrollbar {
-    display: none;
-}
-
-/* Formats each card item */
-.portfolio-item {
-    flex: 0 0 85% !important; /* Shows a glimpse of the next image */
-    scroll-snap-align: start !important;
-    max-width: 320px !important; 
-    text-align: center;
-}
-
-/* Sizes images cleanly */
-.portfolio-item img {
+/* Clean Grid Architecture */
+.clean-portfolio-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 24px !important;
+    margin-top: 24px !important;
     width: 100% !important;
-    height: auto !important;
-    border-radius: 8px; /* Smooth rounded corners */
-    object-fit: cover;
+}
+
+/* Premium Presentation Cards */
+.clean-card {
+    background: #111622 !important; /* Deep dark slate background */
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    transition: transform 0.2s ease, border-color 0.2s ease !important;
+}
+
+.clean-card:hover {
+    transform: translateY(-4px) !important;
+    border-color: #00d2ff !important; /* Glow accent color on hover */
+}
+
+/* Image Frame Constraints */
+.card-img-wrapper {
+    width: 100% !important;
+    height: 200px !important; /* Keeps all your images the exact same height */
+    overflow: hidden !important;
+    background: #000;
+}
+
+.clean-card img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important; /* Keeps ad screenshots from getting cropped weirdly */
+    transition: transform 0.3s ease !important;
+}
+
+.clean-card:hover img {
+    transform: scale(1.03) !important;
+}
+
+/* Card Text Styling */
+.card-info {
+    padding: 16px !important;
+    text-align: left !important;
+}
+
+.card-info h3 {
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    margin: 0 0 6px 0 !important;
+}
+
+.card-info p {
+    color: #8a99ad !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+}
+
+.gallery-desc {
+    color: #b4c6ef !important;
+    font-size: 14px !important;
+    max-width: 600px !important;
+    line-height: 1.6 !important;
 }
 </style>
 
-<!-- LANDSCAPING (anonymous) -->
-<div class="gallery-panel active" id="panel-land">
-...
+<!-- CATEGORY SELECTION TABS -->
+<div class="category-tabs" style="display: flex; gap: 12px; margin-bottom: 24px;">
+    <button class="gtag active" onclick="showTab('meta', this)">Meta Campaign Ads</button>
+    <button class="gtag" onclick="showTab('graphics', this)">Graphic Designs</button>
+</div>
 
-    <!-- LANDSCAPING (anonymous) -->
-    <div class="gallery-panel active" id="panel-land">
-      <p class="gallery-desc">Facebook Ads lead generation campaigns for an Australian landscaping business. Two campaigns ran simultaneously — a cold traffic campaign and a retargeting campaign — generating 28 combined website leads. The retargeting campaign achieved a $27.49 CPL with a 4.97% CTR.</p>
-      <div class="upload-zone" id="zone-land">
-        <p style="color:var(--blue-bright);font-size:28px;margin-bottom:8px;">📸</p>
+<!-- SECTION 1: META CAMPAIGN ADS -->
+<div class="gallery-panel active" id="panel-meta">
+    <p class="gallery-desc">Data-backed Meta and Facebook lead generation campaigns focused on driving inquiries, property sales, and high video view metrics.</p>
+    
+    <div class="clean-portfolio-grid">
+        <!-- TEAM Estate Agents -->
+        <div class="clean-card">
+            <div class="card-img-wrapper">
+                <img src="images/btl1.png" alt="TEAM Estate Agents Ads">
+            </div>
+            <div class="card-info">
+                <h3>TEAM Estate Agents</h3>
+                <p>Managed Facebook advertising lead generation campaigns for listed properties to scale real estate inquiries and tracking reports.</p>
+            </div>
+        </div>
         
-        <div class="gallery-grid" id="gallery-land" style="margin-top:20px;">
-<div class="portfolio-item">
-<img src="btl1.png" alt="">
-<h3>Facebook Campaign Ads</h3>
-  
-</div>
-<div class="portfolio-item">
-<img src="btl2.png" alt="">
-<h3>Graphic Designs</h3>
-</div>
-          
-<div class="portfolio-item">
-<img src="btl3.png" alt="">
-<h3>Graphic Designs</h3>
-</div>
-</div>
-      </div>
-    </div>
+        <!-- We Help Tradies -->
+        <div class="clean-card">
+            <div class="card-img-wrapper">
+                <img src="images/btl1.png" alt="We Help Tradies Ads">
+            </div>
+            <div class="card-info">
+                <h3>We Help Tradies</h3>
+                <p>Facebook Ads Specialist optimizing lead generation funnels for trade and construction industry client metrics.</p>
+            </div>
+        </div>
 
-    <!-- TEAM -->
-    <div class="gallery-panel" id="panel-team">
-      <p class="gallery-desc">Facebook Ads management for TEAM Estate Agents (QLD, AU). Ran lead generation campaigns for property listings and video views campaigns to showcase properties. Also managed social media content and graphics for the Forest Lake Markets page, and delivered detailed monthly ad reports.</p>
-      <div class="upload-zone">
-        <p style="color:var(--blue-bright);font-size:28px;margin-bottom:8px;">📸</p>
-        <p>Upload your ad results, listing graphics, and campaign screenshots below.</p>
-        <p class="uz-sub">Click the button to upload multiple images — they'll display in a grid automatically.</p>
-        <label class="upload-btn" for="upload-team">+ Add Screenshots</label>
-        <input type="file" id="upload-team" multiple accept="image/*" style="display:none" onchange="handleUpload(event,'gallery-team')">
-        <div class="gallery-grid" id="gallery-team" style="margin-top:20px;"></div>
-      </div>
+        <!-- Dantes Ink -->
+        <div class="clean-card">
+            <div class="card-img-wrapper">
+                <img src="images/btl1.png" alt="Dantes Ink Ads">
+            </div>
+            <div class="card-info">
+                <h3>Dantes Ink</h3>
+                <p>Campaign management structuring and lead optimization strategies specifically calibrated for high customer acquisition.</p>
+            </div>
+        </div>
     </div>
+</div>
 
-    <!-- DANTES -->
-    <div class="gallery-panel" id="panel-dantes">
-      <p class="gallery-desc">Facebook Ads Manager for Dantes Ink (UK). Set up, managed, and optimised campaigns across multiple accounts with a primary focus on increasing leads. Delivered ongoing performance improvements and campaign management.</p>
-      <div class="upload-zone">
-        <p style="color:var(--blue-bright);font-size:28px;margin-bottom:8px;">📸</p>
-        <p>Upload your ad results and campaign screenshots below.</p>
-        <p class="uz-sub">Click the button to upload multiple images — they'll display in a grid automatically.</p>
-        <label class="upload-btn" for="upload-dantes">+ Add Screenshots</label>
-        <input type="file" id="upload-dantes" multiple accept="image/*" style="display:none" onchange="handleUpload(event,'gallery-dantes')">
-        <div class="gallery-grid" id="gallery-dantes" style="margin-top:20px;"></div>
-      </div>
+<!-- SECTION 2: GRAPHIC DESIGNS -->
+<div class="gallery-panel" id="panel-graphics" style="display:none;">
+    <p class="gallery-desc">Premium brand styling, social media layouts, structured content calendars, and professional asset resizing.</p>
+    
+    <div class="clean-portfolio-grid">
+        <!-- Umbrella Property Services -->
+        <div class="clean-card">
+            <div class="card-img-wrapper">
+                <img src="images/btl2.png" alt="Umbrella Property Services Design">
+            </div>
+            <div class="card-info">
+                <h3>Umbrella Property Services</h3>
+                <p>Created monthly content strategies, interactive graphic layouts, and scaled Instagram assets for a Canadian service provider.</p>
+            </div>
+        </div>
+
+        <!-- TEAM Estate Agents Graphics -->
+        <div class="clean-card">
+            <div class="card-img-wrapper">
+                <img src="images/btl3.png" alt="FLM Graphic Designs">
+            </div>
+            <div class="card-info">
+                <h3>Forest Lake Markets (TEAM)</h3>
+                <p>Designed organic branding elements, copy captions, and community social layouts for regional real estate events.</p>
+            </div>
+        </div>
+
+        <!-- Gryl Marketing & Andy Olszowka -->
+        <div class="clean-card">
+            <div class="card-img-wrapper">
+                <img src="images/btl2.png" alt="Social Media Management">
+            </div>
+            <div class="card-info">
+                <h3>SMM & Creative Asset Styling</h3>
+                <p>Executed short-term identity management, analytical tracking setups, and visual grid styling for real estate portfolios.</p>
+            </div>
+        </div>
     </div>
+</div>
 
-    <!-- WHT -->
-    <div class="gallery-panel" id="panel-wht">
-      <p class="gallery-desc">Part-time Facebook Ads Specialist for We Help Tradies (AU). Set up and managed lead generation campaigns for their tradie clients across multiple industries.</p>
-      <div class="upload-zone">
-        <p style="color:var(--blue-bright);font-size:28px;margin-bottom:8px;">📸</p>
-        <p>Upload your campaign results and ad screenshots below.</p>
-        <p class="uz-sub">Click the button to upload multiple images — they'll display in a grid automatically.</p>
-        <label class="upload-btn" for="upload-wht">+ Add Screenshots</label>
-        <input type="file" id="upload-wht" multiple accept="image/*" style="display:none" onchange="handleUpload(event,'gallery-wht')">
-        <div class="gallery-grid" id="gallery-wht" style="margin-top:20px;"></div>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <!-- TOOLS -->
 <section id="tools" style="background:var(--black);">
