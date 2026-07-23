@@ -463,17 +463,29 @@ footer{background:var(--black);padding:64px 6% 40px;border-top:1px solid rgba(25
 }
 
 /* Image Frame Constraints */
+/* Turns the image area into a mini swipable carousel container */
 .card-img-wrapper {
     width: 100% !important;
-    height: 200px !important; /* Keeps all your images the exact same height */
-    overflow: hidden !important;
+    height: 200px !important;
+    overflow-x: auto !important; /* Enables horizontal swiping/scrolling */
+    display: flex !important;
+    scroll-snap-type: x mandatory !important;
     background: #000;
+    -webkit-overflow-scrolling: touch;
 }
 
+/* Hides the desktop scrollbar track inside the cards to keep it clean */
+.card-img-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+/* Forces each image to take up the full card width, snapping into place */
 .clean-card img {
+    flex: 0 0 100% !important; /* Each image fills the whole display space */
     width: 100% !important;
     height: 100% !important;
-    object-fit: contain !important; /* Keeps ad screenshots from getting cropped weirdly */
+    object-fit: contain !important;
+    scroll-snap-align: start !important; /* Snaps the image cleanly on swipe */
     transition: transform 0.3s ease !important;
 }
 
@@ -521,15 +533,18 @@ footer{background:var(--black);padding:64px 6% 40px;border-top:1px solid rgba(25
     
     <div class="clean-portfolio-grid">
         <!-- TEAM Estate Agents -->
-        <div class="clean-card">
-            <div class="card-img-wrapper">
-                <img src="btl1.png" alt="TEAM Estate Agents Ads">
-            </div>
-            <div class="card-info">
-                <h3>TEAM Estate Agents</h3>
-                <p>Managed Facebook advertising lead generation campaigns for listed properties to scale real estate inquiries and tracking reports.</p>
-            </div>
-        </div>
+       <!-- Example: TEAM Estate Agents with 3 swipable images -->
+<div class="clean-card">
+    <div class="card-img-wrapper">
+        <img src="images/btl1.png" alt="TEAM Estate Agents Screen 1">
+        <img src="images/btl2.png" alt="TEAM Estate Agents Screen 2">
+        <img src="images/btl3.png" alt="TEAM Estate Agents Screen 3">
+    </div>
+    <div class="card-info">
+        <h3>TEAM Estate Agents</h3>
+        <p>Managed Facebook advertising lead generation campaigns for listed properties to scale real estate inquiries and tracking reports.</p>
+    </div>
+</div>
         
         <!-- We Help Tradies -->
         <div class="clean-card">
