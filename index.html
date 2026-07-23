@@ -444,6 +444,42 @@ footer{background:var(--black);padding:64px 6% 40px;border-top:1px solid rgba(25
       <button class="gtab" onclick="showTab('dantes',this)">🖋️ Dantes Ink · UK</button>
       <button class="gtab" onclick="showTab('wht',this)">🔧 We Help Tradies · AU</button>
     </div>
+<style>
+/* Makes the grid layout a horizontal, swipable row */
+.gallery-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 16px !important;
+    padding-bottom: 15px;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+}
+
+/* Hides desktop scrollbars */
+.gallery-grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* Formats each card item */
+.portfolio-item {
+    flex: 0 0 85% !important; /* Shows a glimpse of the next image */
+    scroll-snap-align: start !important;
+    max-width: 320px !important; 
+    text-align: center;
+}
+
+/* Sizes images cleanly */
+.portfolio-item img {
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 8px; /* Smooth rounded corners */
+    object-fit: cover;
+}
+</style>
+
+<!-- LANDSCAPING (anonymous) -->
+<div class="gallery-panel active" id="panel-land">
+...
 
     <!-- LANDSCAPING (anonymous) -->
     <div class="gallery-panel active" id="panel-land">
