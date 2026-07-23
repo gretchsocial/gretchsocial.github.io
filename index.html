@@ -736,25 +736,27 @@ footer{background:var(--black);padding:64px 6% 40px;border-top:1px solid rgba(25
 </footer>
 
 <script>
-function showTab(id, btn) {
-  document.querySelectorAll('.gallery-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.gtab').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel-' + id).classList.add('active');
-  btn.classList.add('active');
-}
-function handleUpload(event, galleryId) {
-  const gallery = document.getElementById(galleryId);
-  const files = Array.from(event.target.files);
-  files.forEach(file => {
-    const reader = new FileReader();
-    reader.onload = e => {
-      const item = document.createElement('div');
-      item.className = 'gallery-item';
-      item.innerHTML = '<img src="' + e.target.result + '" alt="Portfolio screenshot">';
-      gallery.appendChild(item);
-    };
-    reader.readAsDataURL(file);
-  });
+function showTab(tabId, button) {
+    // Hide all panels completely
+    document.querySelectorAll('.gallery-panel').forEach(panel => {
+        panel.style.display = 'none';
+        panel.classList.remove('active');
+    });
+    
+    // Remove the active styling look from all category buttons
+    document.querySelectorAll('.gtag').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Find the right target container ID (panel-meta or panel-graphics)
+    const activePanel = document.getElementById('panel-' + tabId);
+    if(activePanel) {
+        activePanel.style.display = 'block';
+        activePanel.classList.add('active');
+    }
+    
+    // Set the clicked tab button to active look
+    button.classList.add('active');
 }
 </script>
 
